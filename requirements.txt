@@ -1,0 +1,5 @@
+torch==1.9.1
+torchvision==0.10.1
+wandb==0.12.2
+timm==0.5.5
+prettytable==2.2.0
