@@ -156,7 +156,7 @@ We following table reports the accuracy score across the various splits of Offic
             <td>Clipart</td>
             <td>Art</td>
             <td>85.2</td>
-            <td><a href="">ckpt</a></td>
+	    <td><a href="https://drive.google.com/uc?export=download&id=1VjEmev3Q5itkjF2xaBEBkkZoJ-gHHX3q">ckpt</a></td>
         </tr>
         <tr>
             <td>Clipart</td>
@@ -217,6 +217,18 @@ We following table reports the accuracy score across the various splits of Offic
 </table>
 </div>
 
+### Evaluation
+To evaluate a classifier with pretrained weights, use the `eval.py` under `examples`. Set the `--weight_path` argument with the path of the weight to be evaluated. 
+
+A sample run to evaluate the pretrained ViT B-16 with CDAN+MCC w/ SDAT on Office-Home (with Art as source domain and Clipart as the target domain) is given below.
+```
+python eval.py data/office-home -d OfficeHome -s Ar -t Cl -a vit_base_patch16_224 -b 24 --no-pool --weight_path path_to_weight.pth --log_name Ar2Cl_cdan_mcc_sdat_vit_eval --gpu 0 --phase test
+```
+A sample run to evaluate the pretrained ViT B-16 with CDAN+MCC w/ SDAT on VisDA-2017 (with Synthetic as source domain and Real as the target domain) is given below.
+
+```
+python eval.py data/visda-2017 -d VisDA2017 -s Synthetic -t Real -a vit_base_patch16_224 --per-class-eval --train-resizing cen.crop --weight_path path_to_weight.pth --log_name visda_cdan_mcc_sdat_vit_eval --gpu 0 --no-pool --phase test
+```
 
 
 ## Overview of the arguments
